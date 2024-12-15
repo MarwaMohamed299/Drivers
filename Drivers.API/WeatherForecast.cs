@@ -1,4 +1,4 @@
-namespace Drivers
+namespace Drivers.API
 {
     public class WeatherForecast
     {
