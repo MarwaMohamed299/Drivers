@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>cbc410c7-dcf5-4add-80ef-ae6181894444</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,10 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Drivers.BL\Drivers.BL.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
