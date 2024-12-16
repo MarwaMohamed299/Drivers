@@ -1,4 +1,4 @@
-﻿using Drivers.BL.Dtos;
+﻿using Drivers.BL.Dtos.Drivers;
 using Drivers.DAL.Models;
 using Drivers.DAL.Repositories.Drivers;
 using Microsoft.Extensions.Options;

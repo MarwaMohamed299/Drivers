@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Drivers.BL.Dtos
+namespace Drivers.BL.Dtos.Drivers
 {
     public class DriverReadDto
     {

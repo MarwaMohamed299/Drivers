@@ -6,13 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Drivers.BL.Dtos
+namespace Drivers.BL.Dtos.Drivers
 {
-    public class DriverAddDto
+    public class DriverUpdateDto
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = string.Empty;
         [BsonElement("Name")]
         public string Name { get; set; } = string.Empty;
         [BsonElement("Number")]
