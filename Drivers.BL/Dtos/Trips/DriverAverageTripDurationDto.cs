@@ -11,7 +11,6 @@ namespace Drivers.BL.Dtos.Trips
     public class DriverAverageTripDurationDto
     {
         public required string DriverId { get; set; }
-        public required  DriverReadDto DriverReadDto { get; set; }
         public double AverageTripDuration { get; set; }
     }
 }

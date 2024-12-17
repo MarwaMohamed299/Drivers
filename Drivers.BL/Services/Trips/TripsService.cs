@@ -27,14 +27,7 @@ public class TripsService :ITripsService
         return rawData.Select(doc => new DriverAverageTripDurationDto
         {
             DriverId = doc.GetValue("DriverId").AsString,
-            AverageTripDuration = doc.GetValue("AverageTripDuration").ToDouble(),
-            DriverReadDto = new DriverReadDto
-            {
-                Id = doc.GetValue("_id", BsonString.Empty).AsString,
-                Name = doc.GetValue("Name", BsonString.Empty).AsString,
-                Number = doc.GetValue("Number", new BsonInt32(0)).ToInt32(),
-                Team = doc.GetValue("Team", BsonString.Empty).AsString
-            }
+            AverageTripDuration = doc.GetValue("AverageTripDuration").ToDouble()
         }).ToList();
         
     }

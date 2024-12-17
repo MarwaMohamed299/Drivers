@@ -13,19 +13,9 @@ namespace Drivers.DAL.Repositories.Drivers
     {
         private readonly IMongoCollection<Driver> _driversCollection;
 
-        public DriverRepository(IOptions<Shared.DataBaseSettings> databaseSettings)
+        public DriverRepository(IMongoDatabase database)
         {
-            //initialize mongo client
-
-            var mongoClient = new MongoClient(databaseSettings.Value.ConnectionString);
-
-            // Connect to MongoDB database
-
-            var mongoDb = mongoClient.GetDatabase(databaseSettings.Value.DataBaseName);
-
-            // connect to Drivers Collection
-
-            _driversCollection = mongoDb.GetCollection<Driver>(databaseSettings.Value.CollectionName);
+            _driversCollection = database.GetCollection<Driver>("Drivers");
         }
 
         public async Task<List<Driver>> GetAllDriversAsync()

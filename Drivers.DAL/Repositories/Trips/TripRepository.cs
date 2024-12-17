@@ -30,7 +30,7 @@ namespace Drivers.DAL.Repositories
                 "Duration",
                 new BsonDocument("$subtract", new BsonArray
                 {
-                    new BsonDocument("$toDate", "$EndDate"),  
+                    new BsonDocument("$toDate", "$EndDate"),
                     new BsonDocument("$toDate", "$StartDate")
                 })
             }
@@ -43,27 +43,23 @@ namespace Drivers.DAL.Repositories
             { "AverageTripDuration", new BsonDocument("$avg", "$Duration") }
         }),
 
-        // Lookup driver details
-        new BsonDocument("$lookup", new BsonDocument
+        // Convert DriverId to ObjectId for the lookup (this is the change)
+        new BsonDocument("$addFields", new BsonDocument
         {
-            { "from", "drivers" },
-            { "localField", "_id" },
-            { "foreignField", "_id" },
-            { "as", "DriverDetails" }
+            { "DriverObjectId", new BsonDocument("$toObjectId", "$_id") }
         }),
-
         // Project the final output structure
         new BsonDocument("$project", new BsonDocument
         {
             { "_id", 0 },
             { "DriverId", "$_id" },
-            { "DriverDetails", new BsonDocument("$arrayElemAt", new BsonArray { "$DriverDetails", 0 }) },
             { "AverageTripDuration", 1 }
         })
             };
 
             // Execute the aggregation pipeline and return the results
             var rawData = await _tripCollection.Aggregate<BsonDocument>(pipeline).ToListAsync();
+
             return rawData;
         }
 
